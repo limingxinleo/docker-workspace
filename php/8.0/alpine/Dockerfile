@@ -13,12 +13,8 @@ LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MI
 ##
 # --build-arg timezone=Asia/Shanghai
 ARG timezone
-ARG username
-ARG useremail
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"}
-ENV USER_NAME=${username:-"hyperf"}
-ENV USER_EMAIL=${useremail:-"group@hyperf.io"}
 
 RUN set -ex \
     # update
@@ -42,9 +38,6 @@ RUN set -ex \
     # - config timezone
     && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo "${TIMEZONE}" > /etc/timezone \
-    # - config git
-    && git config --global user.name ${USER_NAME} \
-    && git config --global user.email ${USER_EMAIL} \
     # ---------- clear works ----------
     && rm -rf /var/cache/apk/* /tmp/* /usr/share/man \
     && echo -e "\033[42;37m Build Completed :).\033[0m\n"
@@ -52,5 +45,3 @@ RUN set -ex \
 WORKDIR /root/workspace
 
 VOLUME /root/.ssh
-
-ENTRYPOINT ["/bin/zsh"]
