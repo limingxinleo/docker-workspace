@@ -3,10 +3,11 @@
 ## 构建镜像
 
 ```
-docker build . -f php/7.2/alpine/Dockerfile -t workspace --build-arg username=leo --build-arg useremail=docker@qq.com
+docker build . -f php/8.0/alpine/Dockerfile -t workspace --build-arg username=leo --build-arg useremail=docker@qq.com
 ```
 
 phpx
+
 ```
 docker build . -f php/7.2/alpine/phpx.Dockerfile -t workspace --build-arg username=leo --build-arg useremail=docker@qq.com
 ```
